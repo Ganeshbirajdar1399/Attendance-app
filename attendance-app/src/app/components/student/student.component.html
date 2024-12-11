@@ -1,0 +1,92 @@
+<div class="container w-50 pt-5">
+  <h1 class="text-center">Student Login</h1>
+  <form action="">
+    <div class="mb-3">
+      <label class="form-label"
+        >Username <span class="text-danger">*</span></label
+      >
+      <input type="text" required class="form-control" id="username" />
+    </div>
+    <div class="mb-3">
+      <label class="form-label"
+        >Password <span class="text-danger">*</span></label
+      >
+      <input type="text" required class="form-control" id="password" />
+    </div>
+    <div class="d-flex justify-content-center">
+      <button type="button" class="btn btn-success btn-sm">login</button>
+      <button
+        type="button"
+        class="btn btn-primary btn-sm ms-2"
+        data-bs-toggle="modal"
+        data-bs-target="#studentsignup"
+      >
+        Sign-up
+      </button>
+    </div>
+    
+  </form>
+</div>
+<div
+  class="modal fade"
+  id="studentsignup"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">
+          Sign-up For Student
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label"
+            >First Name <span class="text-danger">*</span></label
+          >
+          <input type="text" required class="form-control" id="fname" />
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label"
+            >Last Name <span class="text-danger">*</span></label
+          >
+          <input type="text" required class="form-control" id="lname" />
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label"
+            >Username <span class="text-danger">*</span></label
+          >
+          <input type="text" required class="form-control" id="username" />
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label"
+            >Password <span class="text-danger">*</span></label
+          >
+          <input type="text" required class="form-control" id="password" />
+        </div>
+        <small class="text-danger">* field required</small>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-success btn-sm"
+          data-bs-toggle="modal"
+          data-bs-target="#student"
+        >
+          login
+        </button>
+        <button type="button" class="btn btn-primary btn-sm">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
