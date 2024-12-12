@@ -1,25 +1,47 @@
 <div class="container w-50 pt-5">
   <h1 class="text-center">Teacher Login</h1>
-  <form action="">
+  <form [formGroup]="teacherForm" (submit)="onLoginSubmit()">
     <div class="mb-3">
       <label class="form-label"
         >Username <span class="text-danger">*</span></label
       >
-      <input type="text" required class="form-control" id="username" />
+      <input
+        type="text"
+        required
+        class="form-control"
+        formControlName="tusername"
+      />
+      <small class="text-danger" *ngIf="teacherForm.get('tusername')?.touched && teacherForm.get('tusername')?.invalid && teacherForm.get('tusername')?.errors?.['required']">
+        Username Is Required
+        </small>
     </div>
     <div class="mb-3">
       <label class="form-label"
         >Password <span class="text-danger">*</span></label
       >
-      <input type="text" required class="form-control" id="password" />
+      <input
+        type="text"
+        required
+        class="form-control"
+        formControlName="tpassword"
+      />
+      <small class="text-danger" *ngIf="teacherForm.get('tpassword')?.touched && teacherForm.get('tpassword')?.invalid && teacherForm.get('tpassword')?.errors?.['required']">
+        Password Is Required
+        </small>
     </div>
     <div class="d-flex justify-content-center">
-      <button type="button" class="btn btn-success btn-sm">login</button>
+      <button
+        type="submit"
+        class="btn btn-success btn-sm"
+        [disabled]="teacherForm.invalid"
+      >
+        login
+      </button>
       <button
         type="button"
         class="btn btn-primary btn-sm ms-2"
         data-bs-toggle="modal"
-        data-bs-target="#teachersignup"
+        data-bs-target="#studentsignup"
       >
         Sign-up
       </button>
@@ -28,7 +50,7 @@
 </div>
 <div
   class="modal fade"
-  id="teachersignup"
+  id="studentsignup"
   data-bs-backdrop="static"
   data-bs-keyboard="false"
   tabindex="-1"
@@ -36,56 +58,76 @@
   aria-hidden="true"
 >
   <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">
-          Sign-up For Teacher
-        </h1>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
+    <form [formGroup]="teacherReg" (submit)="onSignupSubmit()">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">
+            Sign-up For Teacher
+          </h1>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label"
+              >First Name <span class="text-danger">*</span></label
+            >
+            <input
+              type="text"
+              required
+              class="form-control"
+              formControlName="tfname"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label"
+              >Last Name <span class="text-danger">*</span></label
+            >
+            <input
+              type="text"
+              required
+              class="form-control"
+              formControlName="tlname"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label"
+              >Username <span class="text-danger">*</span></label
+            >
+            <input
+              type="text"
+              required
+              class="form-control"
+              formControlName="tusername"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label"
+              >Password <span class="text-danger">*</span></label
+            >
+            <input
+              type="text"
+              required
+              class="form-control"
+              formControlName="tpassword"
+            />
+          </div>
+          <small class="text-danger">* field required</small>
+        </div>
+        <div class="modal-footer">
+         <button
+            type="submit"
+            class="btn btn-primary btn-sm"
+            [disabled]="teacherReg.invalid"
+          >
+            Submit
+          </button>
+        </div>
       </div>
-      <div class="modal-body">
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label"
-            >First Name <span class="text-danger">*</span></label
-          >
-          <input type="text" required class="form-control" id="fname" />
-        </div>
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label"
-            >Last Name <span class="text-danger">*</span></label
-          >
-          <input type="text" required class="form-control" id="lname" />
-        </div>
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label"
-            >Username <span class="text-danger">*</span></label
-          >
-          <input type="text" required class="form-control" id="username" />
-        </div>
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label"
-            >Password <span class="text-danger">*</span></label
-          >
-          <input type="text" required class="form-control" id="password" />
-        </div>
-        <small class="text-danger">* field required</small>
-      </div>
-      <div class="modal-footer">
-        <button
-          type="button"
-          class="btn btn-success btn-sm"
-          data-bs-toggle="modal"
-          data-bs-target="#teacher"
-        >
-          login
-        </button>
-        <button type="button" class="btn btn-primary btn-sm">Submit</button>
-      </div>
-    </div>
+    </form>
   </div>
 </div>
