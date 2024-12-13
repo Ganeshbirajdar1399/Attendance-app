@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -7,6 +7,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { AuthService } from '../../core/services/auth.service';
 @Component({
   selector: 'app-student',
   imports: [ReactiveFormsModule,CommonModule],
@@ -16,7 +17,7 @@ import {
 export class StudentComponent {
   studentForm: FormGroup;
   studentReg: FormGroup;
-
+ authService = inject (AuthService);
   constructor(private fb: FormBuilder) {
     this.studentForm = this.fb.group({
       stdusername: new FormControl('', [Validators.required, Validators.email]),
@@ -33,8 +34,19 @@ export class StudentComponent {
   onLoginSubmit() {
     if (this.studentForm.valid) {
       console.log(this.studentForm.value);
+      this.authService.login(this.studentForm.value).subscribe({
+        next:(response)=>{
+          console.log('Login successful:', response);
+        },
+        error: (err) => {
+          console.error('Login error:', err);
+        },
+      });
     }
-   }
+     else {
+      console.error('Form is invalid');
+    }
+  }
   onSignupSubmit() {
   
     if (this.studentReg.valid) {
